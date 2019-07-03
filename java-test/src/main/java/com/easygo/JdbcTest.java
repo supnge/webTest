@@ -10,7 +10,7 @@ public class JdbcTest {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://39.106.208.55:3306/test1?useUnicode=true&characterEncoding=utf8", "root", "Sp_123456");
+            connection = DriverManager.getConnection("jdbc:mysql://39.106.208.55:3306/test1?useUnicode=true&characterEncoding=utf8&useSSL=false", "root", "Sp_123456");
 
             statement = connection.createStatement();
             String sql = "select * from user;";
@@ -18,38 +18,18 @@ public class JdbcTest {
             resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getObject(1));
-                System.out.println(resultSet.getObject(2));
-                System.out.println(resultSet.getObject(3));
-                System.out.println(resultSet.getObject(4));
-                System.out.println(resultSet.getObject(5));
+                System.out.print("id: "+resultSet.getObject("id")+" ");
+                System.out.print("name: "+resultSet.getObject("name")+" ");
+                System.out.print("password: "+resultSet.getObject("password")+" ");
+                System.out.print("email: "+resultSet.getObject("email")+" ");
+                System.out.println("birthday: "+resultSet.getObject("birthday")+" ");
                 System.out.println("===============================");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            DbUtils.closeAll(connection, statement, resultSet);
         }
     }
 }
