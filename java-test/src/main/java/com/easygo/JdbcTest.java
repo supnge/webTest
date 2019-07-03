@@ -10,7 +10,7 @@ public class JdbcTest {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf8", "root", "Sp_123456");
+            connection = DriverManager.getConnection("jdbc:mysql://39.106.208.55:3306/test1?useUnicode=true&characterEncoding=utf8", "root", "Sp_123456");
 
             statement = connection.createStatement();
             String sql = "select * from user;";
