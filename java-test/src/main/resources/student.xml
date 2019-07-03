@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE students SYSTEM "student.dtd">
+<students>
+    <student number="S_001">
+        <name>范冰冰</name>
+        <password>123</password>
+        <gender>女</gender>
+        <birthday>1983-10-11</birthday>
+    </student>
+    <student number="S_002">
+        <name>李冰冰</name>
+        <password>123</password>
+        <gender>女</gender>
+        <birthday>1984-10-11</birthday>
+    </student>
+    <student number="S_003">
+        <!-- <![CDATA[]]> 表示转义 -->
+        <name><![CDATA[&glt;>林心如<]]></name>
+        <password>123</password>
+        <gender>女</gender>
+        <birthday>1982-10-11</birthday>
+    </student>
+</students>
