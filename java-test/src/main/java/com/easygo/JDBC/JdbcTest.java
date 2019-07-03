@@ -1,4 +1,4 @@
-package com.easygo;
+package com.easygo.JDBC;
 
 import java.sql.*;
 
