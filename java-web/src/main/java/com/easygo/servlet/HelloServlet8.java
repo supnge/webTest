@@ -18,7 +18,7 @@ public class HelloServlet8 extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         // 通过beanutils来封装请求参数
-        User user = new User("123","123");
+        User user = new User("123","123", "","");
 
         try{
             BeanUtils.populate(user, request.getParameterMap());

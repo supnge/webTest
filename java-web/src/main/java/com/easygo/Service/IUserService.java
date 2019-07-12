@@ -12,6 +12,10 @@ import com.easygo.exception.UserException;
  * 作者姓名           修改时间           版本号              描述
  */
 public interface IUserService {
-    public void register(User user);
-    public User login(String username, String password) throws UserException;
+    public boolean register(User user);
+    public User login(String username,String password);
+    public User login(User user) throws UserException;
+
+    //用户是否存在
+    public User userExsit(User user);
 }

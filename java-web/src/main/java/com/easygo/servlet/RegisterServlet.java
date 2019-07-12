@@ -2,17 +2,17 @@ package com.easygo.servlet;
 
 import com.easygo.Service.IUserService;
 import com.easygo.domain.User;
-import com.easygo.serviceImpl.IUserServiceImpl;
+import com.easygo.Service.impl.IUserServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 
 /**
@@ -23,6 +23,7 @@ import java.util.Date;
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
+@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     IUserService userService = new IUserServiceImpl();
 
@@ -36,11 +37,12 @@ public class RegisterServlet extends HttpServlet {
             ConvertUtils.register(new DateLocaleConverter(), Date.class);
             BeanUtils.populate(user, req.getParameterMap());
 
-            userService.register(user);
-
-            resp.getWriter().write("注册成功，3秒后返回主页");
-            resp.setHeader("refresh", "3;url="+req.getContextPath()+"/index.jsp");
-
+            boolean ifSuccess = userService.register(user);
+            System.out.println(ifSuccess);
+            if (ifSuccess){
+                resp.getWriter().write("注册成功，3秒后返回主页");
+                resp.setHeader("refresh", "3;url="+req.getContextPath()+"/index.jsp");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             resp.getWriter().write("注册失败"+e.getMessage());

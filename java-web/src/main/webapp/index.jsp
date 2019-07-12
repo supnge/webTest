@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
-<h2>Hello World!</h2>
+<h2>MVC</h2>
 
 <a href="login.jsp">登录</a>
 <a href="register.jsp">注册</a>

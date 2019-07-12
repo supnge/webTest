@@ -1,4 +1,4 @@
-package com.easygo.daoImpl;
+package com.easygo.dao.impl;
 
 import com.easygo.dao.IUserDao;
 import com.easygo.domain.User;
@@ -18,9 +18,10 @@ import java.sql.ResultSet;
  */
 public class IUserDaoImpl implements IUserDao {
     @Override
-    public void insert(User user) {
+    public boolean insert(User user) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        boolean result = false ;
 
         try {
             connection = DbUtils2.getConnection();
@@ -30,11 +31,12 @@ public class IUserDaoImpl implements IUserDao {
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
             preparedStatement.setString(4, user.getBirthday());
-            preparedStatement.execute();
+            result = preparedStatement.execute();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return result;
     }
 
     @Override

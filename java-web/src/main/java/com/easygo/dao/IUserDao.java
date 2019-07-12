@@ -11,7 +11,7 @@ import com.easygo.domain.User;
  * 作者姓名           修改时间           版本号              描述
  */
 public interface IUserDao {
-    public void insert(User user);
+    public boolean insert(User user);
     public User findUser(String username, String password);
     public User findUser(String username);
 }

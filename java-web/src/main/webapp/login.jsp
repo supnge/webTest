@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/webTest/HelloServlet" method="post">
+<form action="/webTest/LoginServlet" method="post">
 
     <table border="1">
         <tr>
