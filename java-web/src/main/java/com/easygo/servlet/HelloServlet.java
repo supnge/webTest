@@ -1,5 +1,7 @@
 package com.easygo.servlet;
 
+import cn.dsna.util.images.ValidateCode;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -22,7 +24,6 @@ public class HelloServlet extends HttpServlet {
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
         System.out.println("username:"+username +"******"+ "password:"+ password);
-
 
         if("zhangsan".equals(username) && "123".equals(password)){
             Cookie cookie = new Cookie("username", username);

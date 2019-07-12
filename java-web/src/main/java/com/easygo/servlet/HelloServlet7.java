@@ -20,7 +20,7 @@ public class HelloServlet7 extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         //创建用户对象
-        User user = new User();
+        User user = new User("user", "user");
 
         //获取请求参数
         /**
