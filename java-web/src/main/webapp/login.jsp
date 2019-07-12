@@ -9,43 +9,6 @@
 <html>
 <head>
     <title>Title</title>
-    <script type="text/javascript" >
-        var cookies = document.cookie.split(";");
-        // console.log(cookies);
-
-        function getCK(mkey) {
-
-            for(var i = 0;i<cookies.length;i++){
-                var kv = cookies[i].split('=');
-                //key有可能空字符串
-                if( kv[0].trim() == mkey){
-                    return kv[1].trim();
-                }
-            }
-
-            return '';
-        }
-
-        window.onload = function(){
-            var remember = getCK('remember');
-            var username = getCK('username');
-
-            console.log(remember + "---");
-            console.log(username);
-
-            if(remember=="true"){
-                var userNameInput = document.getElementById('username');
-                userNameInput.value = username;
-
-                var rememberInput = document.getElementById('remember');
-                rememberInput. checked="checked";
-            }
-
-        }
-
-
-
-    </script>
 </head>
 <body>
 <form action="/webTest/HelloServlet" method="post">
@@ -63,11 +26,7 @@
             </td>
             <td><input id="password" type="password" name = "password"></td>
         </tr>
-        <tr>
-            <td colspan="2">
-                <input id="remember" type="checkbox" name="remember" value="true">记住密码
-            </td>
-        </tr>
+
         <tr>
             <td colspan="2">
                 <input type="submit" value="登录">

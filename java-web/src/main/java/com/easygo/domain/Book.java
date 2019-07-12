@@ -1,4 +1,4 @@
-package com.easygo.bean;
+package com.easygo.domain;
 
 /**
  * Author:   supeng

@@ -1,6 +1,6 @@
 package com.easygo.servlet;
 
-import com.easygo.bean.User;
+import com.easygo.domain.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

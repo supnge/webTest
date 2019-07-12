@@ -1,17 +1,15 @@
 package com.easygo.servlet;
 
-import com.easygo.bean.Book;
+import com.easygo.domain.Book;
 import com.easygo.utils.DBUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * Author:   supeng

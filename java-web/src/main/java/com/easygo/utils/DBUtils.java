@@ -1,6 +1,6 @@
 package com.easygo.utils;
 
-import com.easygo.bean.Book;
+import com.easygo.domain.Book;
 
 import java.util.HashMap;
 import java.util.Map;

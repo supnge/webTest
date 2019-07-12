@@ -1,6 +1,6 @@
 package com.easygo.servlet;
 
-import com.easygo.bean.Book;
+import com.easygo.domain.Book;
 import com.easygo.utils.DBUtils;
 
 import javax.servlet.ServletException;
