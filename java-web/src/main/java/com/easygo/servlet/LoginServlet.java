@@ -36,9 +36,6 @@ public class LoginServlet extends HttpServlet {
         try {
             user = userService.login(pageUser);
 
-            System.out.println(user.getUsername());
-            System.out.println(null==user);
-
             if(null == user.getUsername()){
                 response.getWriter().write("登录失败，3秒后返回登录页面");
                 response.setHeader("refresh", "3;url="+request.getContextPath()+"/login.jsp");

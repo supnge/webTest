@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 /**
  * Author:   supeng
@@ -14,12 +15,20 @@ import java.sql.Statement;
  * 作者姓名           修改时间           版本号              描述
  */
 public class DbUtils2 {
-    private static String url = "jdbc:mysql://39.106.208.55:3306/test1?useUnicode=true&characterEncoding=utf8&useSSL=false";
-    private static String user = "root";
-    private static String password = "Sp_123456";
-    private static String driverClass = "com.mysql.jdbc.Driver";
+
+
+    private static String url ;
+    private static String user ;
+    private static String password ;
+    private static String driverClass ;
 
     static {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
+        url = resourceBundle.getString("url");
+        user = resourceBundle.getString("user");
+        password = resourceBundle.getString("password");
+        driverClass = resourceBundle.getString("driverClass");
+        System.out.println(driverClass);
         try {
             Class.forName(driverClass);
         } catch (ClassNotFoundException e) {

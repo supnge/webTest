@@ -15,6 +15,9 @@
 
     <table border="1">
         <tr>
+            <td colspan="2"><span style="color: red;">${exception.message}</span></td>
+        </tr>
+        <tr>
             <td>
                 用户名：
             </td>
