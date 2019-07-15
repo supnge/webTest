@@ -37,6 +37,7 @@ public class IUserDaoImpl implements IUserDao {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
+            DbUtils2.closeAll(connection,preparedStatement,null);
             return result;
         }
 

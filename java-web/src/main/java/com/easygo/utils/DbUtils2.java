@@ -1,9 +1,15 @@
 package com.easygo.utils;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.commons.dbcp.BasicDataSourceFactory;
+
+import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -17,6 +23,7 @@ import java.util.ResourceBundle;
 public class DbUtils2 {
 
 
+    /*
     private static String url ;
     private static String user ;
     private static String password ;
@@ -40,6 +47,36 @@ public class DbUtils2 {
 
             return DriverManager.getConnection(url, user, password);
 
+    }
+    */
+
+    // 使用dbcp实现数据库连接
+    /*
+    private static DataSource dataSource;
+
+    static {
+        Properties properties = new Properties();
+
+        try {
+            properties.load(DbUtils2.class.getClassLoader().getResourceAsStream("dbcpconfig.properties"));
+
+            try {
+                dataSource = BasicDataSourceFactory.createDataSource(properties);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }*/
+
+    //使用c3p0实现数据库连接
+    private static DataSource dataSource = new ComboPooledDataSource();
+
+    public static Connection getConnection() throws Exception{
+            return dataSource.getConnection();
     }
 
     public static void closeAll(Connection connection, Statement statement, ResultSet resultSet) {
