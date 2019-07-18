@@ -1,16 +1,11 @@
 package com.easygo.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.apache.commons.dbcp.BasicDataSourceFactory;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Properties;
-import java.util.ResourceBundle;
 
 /**
  * Author:   supeng
@@ -74,6 +69,10 @@ public class DbUtils2 {
 
     //使用c3p0实现数据库连接
     private static DataSource dataSource = new ComboPooledDataSource();
+
+    public static DataSource getDataSource(){
+        return  dataSource;
+    }
 
     public static Connection getConnection() throws Exception{
             return dataSource.getConnection();
