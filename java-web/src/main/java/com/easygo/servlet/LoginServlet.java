@@ -25,31 +25,42 @@ public class LoginServlet extends HttpServlet {
     IUserService userService = new IUserServiceImpl();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        User pageUser = new User(username, password, null, null);
-        User user;
-        try {
-            user = userService.login(pageUser);
+        System.out.println(username);
+        System.out.println(password);
 
-            if(null == user.getUsername()){
-                response.getWriter().write("登录失败，3秒后返回登录页面");
-                response.setHeader("refresh", "3;url="+request.getContextPath()+"/login.jsp");
-            }else {
-                request.getSession().setAttribute("loginUsername",user.getUsername());
-                response.getWriter().write("登录成功，3秒后返回登录页面");
-                response.setHeader("refresh", "3;url="+request.getContextPath()+"/main.jsp");
-            }
+        if("zhangsan".equals(username) && "123".equals(password))
+        {
+            response.getWriter().write("成功");
+        }
+        else{
+            response.getWriter().write("失败");
+        }
 
-        } catch (UserException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            request.setAttribute("exception", e);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+//        request.setCharacterEncoding("UTF-8");
+
+        String username = request.getParameter("username2");
+        String password = request.getParameter("password2");
+        System.out.println(username);
+        System.out.println(password);
+
+        if("zhangsan".equals(username) && "123".equals(password))
+        {
+            response.getWriter().write("成功");
+        }
+        else{
+            response.getWriter().write("失败");
         }
     }
 }

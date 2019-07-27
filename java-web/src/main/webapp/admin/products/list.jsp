@@ -125,7 +125,7 @@
 								<td align="right" bgColor="#ffffff" class="ta_01">
 									<button type="submit" id="search" name="search"
 										value="&#26597;&#35810;" class="button_view">
-										查询</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+										&#26597;&#35810;</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 									type="reset" name="reset" value="重置"
 									class="button_view" />
 								</td>

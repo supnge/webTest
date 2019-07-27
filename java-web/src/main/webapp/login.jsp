@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/webTest/LoginServlet" method="post">
+<form action="/webTest/LoginServlet" method="get">
 
     <table border="1">
         <tr>
@@ -28,6 +28,28 @@
                 密码：
             </td>
             <td><input id="password" type="password" name = "password"></td>
+        </tr>
+
+    </table>
+</form>
+
+<form action="/webTest/LoginServlet" method="post">
+
+    <table border="1">
+        <tr>
+            <td colspan="2"><span style="color: red;">${exception.message}</span></td>
+        </tr>
+        <tr>
+            <td>
+                用户名：
+            </td>
+            <td><input id="username2" type="text" name = "username2"></td>
+        </tr>
+        <tr>
+            <td>
+                密码：
+            </td>
+            <td><input id="password2" type="password" name = "password2"></td>
         </tr>
 
         <tr>

@@ -72,7 +72,7 @@
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									商品编号</td>
 								<td class="ta_01" bgColor="#ffffff"><input type="text"
-									name="id" size="15" value="" id="Form1_userName" class="bg" />
+									name="id" size="15" value="" id="Form1_userName2" class="bg" />
 								</td>
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">
 									类别：</td>
@@ -137,7 +137,7 @@
 				</tr>
 				<tr>
 					<td class="ta_01" align="right">
-						<button type="button" id="add" name="add" value="&#28155;&#21152;"
+						<button type="button" id="delete" name="add" value="&#28155;&#21152;"
 							class="button_add" onclick="deleteAllBook();">批量删除
 						</button>
 						<button type="button" id="add" name="add" value="&#28155;&#21152;"
@@ -205,7 +205,14 @@
 										</c:if>
 										<c:if test="${pageResult.totalPage != 0 }">
 											<c:forEach begin="1" end="${pageResult.totalPage}" var="p">
-												<a href="${pageContext.request.contextPath }/BookListServlet?page=${p}">${p}</a>
+												<a href="${pageContext.request.contextPath }/BookListServlet?page=${p}">
+													<%--加入判断--%>
+													<c:choose>
+														<c:when test="${pageResult.currentPage eq p}"><span style="color: red">${p}</span></c:when>
+														<c:otherwise>${p}</c:otherwise>
+													</c:choose>
+
+												</a>
 											</c:forEach>
 										</c:if>
 										

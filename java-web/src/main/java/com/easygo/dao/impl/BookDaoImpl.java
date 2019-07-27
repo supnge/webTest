@@ -3,12 +3,14 @@ package com.easygo.dao.impl;
 import com.easygo.dao.BookDao;
 import com.easygo.domain.Book;
 import com.easygo.domain.IBook;
+import com.easygo.domain.PageResult;
 import com.easygo.utils.DbUtils2;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -85,5 +87,34 @@ public class BookDaoImpl implements BookDao {
 
         QueryRunner queryRunner = new QueryRunner(DbUtils2.getDataSource());
         return queryRunner.query(sql, new BeanListHandler<>(IBook.class));
+    }
+
+    @Override
+    public PageResult<IBook> findBooksWithPageCount(int page) throws SQLException {
+
+        QueryRunner queryRunner = new QueryRunner(DbUtils2.getDataSource());
+        PageResult<IBook> pageResult = new PageResult<>();
+
+        //设置当前码
+        pageResult.setCurrentPage(page);
+        //总条数
+        List<IBook> books = queryRunner.query("select * from books where 1=1", new BeanListHandler<>(IBook.class));
+        int totalCount = books.size();
+        pageResult.setTotalCount(totalCount);
+        //总页数
+        int totalPageCount = (totalCount%pageResult.getPageCount()==0? totalCount/pageResult.getPageCount():totalCount/pageResult.getPageCount()+1);
+        pageResult.setTotalPage(totalPageCount);
+        //设置当前查询到的数据
+        String sql = "select * from books where 1=1 order by name limit ?, ? ";
+        int start = pageResult.getPageCount()*(page-1);
+        List<IBook> list = queryRunner.query(sql, new BeanListHandler<>(IBook.class), start, pageResult.getPageCount());
+
+        for(Iterator iterator = list.iterator(); iterator.hasNext();){
+            IBook book = (IBook) iterator.next();
+        }
+
+        pageResult.setList(list);
+
+        return pageResult;
     }
 }

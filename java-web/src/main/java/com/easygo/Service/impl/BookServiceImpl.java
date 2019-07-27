@@ -4,6 +4,8 @@ import com.easygo.Service.BookService;
 import com.easygo.dao.BookDao;
 import com.easygo.dao.impl.BookDaoImpl;
 import com.easygo.domain.IBook;
+import com.easygo.domain.PageResult;
+import sun.jvm.hotspot.debugger.Page;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -55,5 +57,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<IBook>  findBookByCondition(String id, String category, String name, String lowPrice, String highPrice) throws SQLException {
         return bookDao.findByCondition(id, category, name,lowPrice, highPrice);
+    }
+
+    @Override
+    public PageResult<IBook> findBooksWithPageCount(int page) throws SQLException {
+            return bookDao.findBooksWithPageCount(page);
     }
 }
